@@ -3,12 +3,12 @@ const cheerio = require("cheerio");
 
 const getData2 = async () => {
   let page1 = await getData("https://www.dogdrip.net/dogdrip")
-  let page2 = await getData("https://www.dogdrip.net/dogdrip?page=2")
+  // let page2 = await getData("https://www.dogdrip.net/dogdrip?page=2")
   // let page3 = await getData("https://www.dogdrip.net/dogdrip?page=3")
   
   const newArr = [
     ...page1,
-    ...page2,
+    // ...page2,
     // ...page3,
   ]
   
@@ -32,7 +32,7 @@ const getData = async (url) => {
         url: `${$(item).find('td.title a').attr('href')}`,
         author: $(item).find('td.author a').text(),
         date: $(item).find('td.time').text(),
-        view: '',
+        view: '-',
         like: $(item).find('td.ed').text()
       }
     })

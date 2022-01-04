@@ -57,7 +57,7 @@ body .webtitle{
 
 .box-container {
   display: flex;
-  padding: 10px 20px;
+  padding: 2px 30px;
   border-bottom: 2px solid #c0c0c0;
   background-color: white;
 }
@@ -90,9 +90,13 @@ a:visited{
 }
 
 .left-container .like-wrap{
-  margin-top: 10px;
-  font-size: 0.9em;
+  margin-top: 6px;
+  font-size: 1em;
   color:red;
+}
+
+.left-container .like-wrap .like {
+  font-weight: 900;
 }
 
 .left-container .site{
@@ -109,9 +113,21 @@ a:visited{
   color: rgb(52, 82, 146);
 }
 
+.left-container .fm {
+  color: rgb(79, 161, 255);
+}
+
+.left-container .ppomppu {
+  color: rgb(97, 97, 97);
+}
+
+.left-container .humoruniv {
+  color: hotpink;
+}
+
 .left-container .view{
   color: #979797;
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 .right-container {
@@ -119,7 +135,7 @@ a:visited{
   justify-content: center;
   flex-direction: column;
   width: 92%;
-  padding-left: 14px;
+  margin-left: 20px;
 }
 
 .right-container .title-wrap{
