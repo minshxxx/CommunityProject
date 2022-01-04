@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
     data2 = await require('../dogdrip').getData2()
     data3 = await require('../fmkorea').getData2()
     data4 = await require('../ppomppu').getData2()
-    data5 = await require('../humoruniv').getData2()
     res.render('index', { title: 'Express', data, data2 })
   } 
   func();
