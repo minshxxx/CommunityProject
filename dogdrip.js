@@ -9,7 +9,7 @@ const getData2 = async () => {
   const newArr = [
     ...page1,
     ...page2,
-    ...page3,
+    // ...page3,
   ]
   
   return newArr;
