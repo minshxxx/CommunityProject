@@ -4,7 +4,10 @@ const puppeteer = require('puppeteer')
 
 const getData2 = async() => {
     try{
-        const broswer = await puppeteer.launch({ headless: true});
+        const broswer = await puppeteer.launch({ 
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
         const page = await broswer.newPage();
 
         page.on("dialog", (dialog) => {
