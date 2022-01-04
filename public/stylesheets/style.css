@@ -1,0 +1,120 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css');
+
+@font-face {
+  font-family: 'GilbeotBI';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotBI.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HSSaemaul-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSSaemaul-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CookieRun-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-size: 36px;
+  font-weight: 100;
+  font-family: 'GilbeotBi';
+  font-family: 'HSSaemaul-Regular';
+  font-family: 'CookieRun-Regular';
+  font-family: 'GmarketSansMedium';
+}
+
+body .webtitle{    
+  background: brown;
+  color: white;
+  padding: 20px;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.box-container {
+  display: flex;
+  padding: 10px;
+  border-bottom: 2px solid #c0c0c0;
+}
+
+.left-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  font-size: 0.8em;
+  width: 8%;
+  margin-right: 10px;
+}
+
+.left-container .like-wrap{
+  margin-top: 10px;
+  font-size: 0.9em;
+  color:red;
+}
+
+.left-container .site{
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.left-container .ou {
+  color: blue;
+}
+
+.left-container .view{
+  color: #979797;
+  font-size: 0.8em;
+}
+
+.right-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 92%;
+  padding-left: 14px;
+}
+
+.right-container .title-wrap{
+  display: block;
+}
+
+.right-container .title{
+  font-size: 0.9em;
+}
+
+.right-container .comment{
+  color: rgb(255, 123, 0);
+  margin-left: 10px;
+  font-size: 0.9em;
+}
+
+.right-container .author{
+  font-size: 0.75em;
+  color:#9e9e9e;
+}

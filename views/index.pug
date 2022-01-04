@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  //- table
+  //-   -for(var i = 0; i < data.length; i++)
+  //-     tr.container(onClick=`location.href="${data[i].url}"`)
+  //-       td.left-td(width="8%")
+  //-         -var siteColor = (data[i].site === '오유' ? 'ou' : null)
+  //-         .left-wrap
+  //-           .heart ♥
+  //-           .like #{data[i].like}
+  //-         .left-wrap(class=siteColor)
+  //-           div #{data[i].site}
+  //-       td(width="*")
+  //-         .center-wrap
+  //-           .title #{data[i].title}
+  .box-container(style="background-color: black; color: white;")
+    .left-container 
+      .like-wrap
+        .like Like
+        .view View
+      .site site
+    .right-container
+      .title-wrap 
+        text.title Title
+        span.comment
+      .author atuhor / date
+  -for(var i = 0; i < data.length; i++)
+    -var siteColor = (data[i].site === '오유' ? 'ou' : null)
+    .box-container(onClick=`location.href="${data[i].url}"`)
+      .left-container
+        .like-wrap
+          .heart 
+          .like ♥#{data[i].like}
+          .view #{data[i].view}
+        .site(class=siteColor) #{data[i].site}
+      .right-container
+        .title-wrap
+          text.title #{data[i].title} 
+          span.comment #{data[i].comment}
+        .author #{data[i].author} / #{data[i].date}
+        
