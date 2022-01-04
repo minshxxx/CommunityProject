@@ -1,11 +1,25 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const log = console.log;
 
-const getData = async () => {
+const getData2 = async () => {
+  let page1 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  
+  const newArr = [
+    ...page1,
+    ...page2,
+    ...page3
+  ]
+  
+  return newArr;
+}
+
+const getData = async (url) => {
   try {
-    const html = await axios.get("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
-
+    let html;
+    html = await axios.get(url);
+    
     let ulList = [];
     const $ = cheerio.load(html.data);
     const $bodyList = $("table.table_list tbody").find('tr.view');
@@ -22,6 +36,7 @@ const getData = async () => {
         like: $(item).find('td.oknok').text()
       }
     })
+    
     return ulList
   } catch (error) {
     console.error(error);
@@ -31,12 +46,9 @@ const getData = async () => {
 const getTitle = (str) => {
   const newStr = str.trim().split('[')
   let retStr = ""
-  console.log(newStr)
-  console.log(newStr.length)
   for(var i = 0; i < newStr.length - 1; i++){
     retStr += newStr[i];
   }
-  console.log(retStr)
   return retStr;
 }
 
@@ -45,4 +57,4 @@ const getComment = (str) => {
   return '[' + newStr[0] + ']';
 }
 
-module.exports.getData = getData;
+module.exports.getData2 = getData2;

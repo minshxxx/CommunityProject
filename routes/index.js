@@ -3,11 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  require('./../test').getData().then( (data) => {
-    console.log(data);
+  let data;
+  let func = async () => { 
+    data = await require('./../todayhumor').getData2()
     res.render('index', { title: 'Express', data })
-  })
+  } 
+  func();
 })
-
 
 module.exports = router;
