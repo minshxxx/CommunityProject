@@ -127,14 +127,14 @@ a:visited{
 }
 
 .right-container .title{
-  font-size: 0.8em;
+  font-size: 0.75em;
   color: black;
 }
 
 .right-container .comment{
   color: rgb(255, 123, 0);
   margin-left: 10px;
-  font-size: 0.9em;
+  font-size: 0.75em;
 }
 
 .right-container .author{
