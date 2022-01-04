@@ -39,4 +39,18 @@ block content
           text.title #{data[i].title} 
           span.comment #{data[i].comment}
         .author #{data[i].author} / #{data[i].date}
+  -for(var i = 0; i < data2.length; i++)
+    -var siteColor = (data2[i].site === '갣립' ? 'dog' : null)
+    .box-container(onClick=`location.href="${data2[i].url}"`)
+      .left-container
+        .like-wrap
+          .heart 
+          .like ♥#{data2[i].like}
+          .view #{data2[i].view}
+        .site(class=siteColor) #{data2[i].site}
+      .right-container
+        .title-wrap
+          text.title #{data2[i].title} 
+          span.comment #{data2[i].comment}
+        .author #{data2[i].author} / #{data2[i].date}
         

@@ -19,16 +19,16 @@ const getData = async (url) => {
   try {
     let html;
     html = await axios.get(url);
-    
+
     let ulList = [];
     const $ = cheerio.load(html.data);
     const $bodyList = $("table.table_list tbody").find('tr.view');
-
+    
     $bodyList.each((i, item) => {
       ulList[i] = {
         site: `오유`,
-        title: getTitle($(item).find('td.subject').text()),
-        comment: getComment($(item).find('td.subject').text()),
+        title: $(item).find('td.subject a').text(),
+        comment: $(item).find('td.subject span.list_memo_count_span').text(),
         url: `http://todayhumor.co.kr${$(item).find('td.subject a').attr('href')}`,
         author: $(item).find('td.name').text(),
         date: $(item).find('td.date').text(),
@@ -42,19 +42,4 @@ const getData = async (url) => {
     console.error(error);
   }
 }
-
-const getTitle = (str) => {
-  const newStr = str.trim().split('[')
-  let retStr = ""
-  for(var i = 0; i < newStr.length - 1; i++){
-    retStr += newStr[i];
-  }
-  return retStr;
-}
-
-const getComment = (str) => {
-  const newStr = str.trim().split('[')[1].split(']')
-  return '[' + newStr[0] + ']';
-}
-
 module.exports.getData2 = getData2;
