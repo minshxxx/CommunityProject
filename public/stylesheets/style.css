@@ -59,7 +59,25 @@ body .webtitle{
   display: flex;
   padding: 10px 20px;
   border-bottom: 2px solid #c0c0c0;
+  background-color: white;
 }
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  background-color: rgb(137, 231, 255);
+}
+
+a:visited{
+  background-color: rgb(228, 228, 228);
+}
+
+.box-container:hover{
+  cursor: pointer;
+}
+
 
 .left-container {
   display: flex;
@@ -110,6 +128,7 @@ body .webtitle{
 
 .right-container .title{
   font-size: 0.9em;
+  color: black;
 }
 
 .right-container .comment{

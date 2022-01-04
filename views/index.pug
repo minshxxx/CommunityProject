@@ -27,7 +27,7 @@ block content
       .author atuhor / date
   -for(var i = 0; i < data.length; i++)
     -var siteColor = (data[i].site === '오유' ? 'ou' : null)
-    .box-container(onClick=`location.href="${data[i].url}"`)
+    a.box-container(href=`${data[i].url}`)
       .left-container
         .like-wrap
           .heart 
@@ -41,7 +41,7 @@ block content
         .author #{data[i].author} / #{data[i].date}
   -for(var i = 0; i < data2.length; i++)
     -var siteColor = (data2[i].site === '갣립' ? 'dog' : null)
-    .box-container(onClick=`location.href="${data2[i].url}"`)
+    a.box-container(href=`${data2[i].url}`)
       .left-container
         .like-wrap
           .heart 
