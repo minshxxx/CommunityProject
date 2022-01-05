@@ -1,7 +1,7 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 const puppeteer = require('puppeteer')
-const inputData = require('./database')
+const db = require('./database')
 
 const func = async() => {
     try{
@@ -24,15 +24,16 @@ const func = async() => {
         $bodyList.each((i, item) => {
             ulList[i] = {
               site: `웃대`,
-              title: getTitle($(item).find('td.li_sbj a').text(), $(item).find('td.li_sbj a span.list_comment_num').text()),
+              subject: getTitle($(item).find('td.li_sbj a').text(), $(item).find('td.li_sbj a span.list_comment_num').text()),
               comment: $(item).find('td.li_sbj a span.list_comment_num').text().trim(),
               url: `http://web.humoruniv.com/board/humor/${$(item).find('td.li_sbj a').attr('href')}`,
               author: $(item).find('td.g6').text(),
-              date: $(item).find('span.w_date').text().trim(),
+              date: $(item).find('span.w_date').text().trim() + ' ' + $(item).find('span.w_time').text().trim(),
               view: getView($(item).find('td.li_und').text()),
               like: $(item).find('span.o').text().trim()
             }
-            inputData(ulList[i])
+            console.log(ulList[i])
+            db.inputData(ulList[i])
         })
         await page.close();
         await browser.close();
