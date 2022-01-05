@@ -1,6 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require('./database')
+const calcDate = require('./calcDate')
 
 const getData2 = async () => {
   let page1 = await getData("https://www.fmkorea.com/best");
@@ -32,7 +33,7 @@ const getData = async (url) => {
         comment: $(item).find('h3.title a span.comment_count').text(),
         url: `https://www.fmkorea.com/${$(item).find('h3.title a').attr('href')}`,
         author: $(item).find('span.author').text(),
-        date: $(item).find('span.regdate').text().trim(),
+        date: calcDate($(item).find('span.regdate').text().trim()),
         view: '-',
         like: $(item).find('a.pc_voted_count span.count').text()
       }

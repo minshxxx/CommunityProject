@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes){
             subject : { type: DataTypes.STRING },
             url : { type: DataTypes.STRING },
             author : { type: DataTypes.STRING },
-            date : { type: DataTypes.STRING },
+            date : { type: DataTypes.DATE },
             comment : { type: DataTypes.STRING },
             view : { type: DataTypes.STRING },
             like : { type: DataTypes.STRING },
