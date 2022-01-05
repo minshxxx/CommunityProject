@@ -13,11 +13,11 @@ const getData2 = async() => {
         await page.goto(`http://web.humoruniv.com/`, { waitUntil: ['load', 'networkidle0'] }); // WAIT for the page load finish. Provide wait options, you can read moe about it in documentation.
         await page.waitForSelector('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
         await page.click('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
-        await page.waitForSelector('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
+        await page.waitForSelector('#post_list > tbody > tr:nth-child(19)')
         
         const content = await page.content();
         const $ = cheerio.load(content)
-        const $bodyList = $("table#post_list tbody").find('tr[id^=li_]');
+        const $bodyList = $("#post_list > tbody").find('tr[id^=li_chk_pds-]');
 
         let ulList = [];
         
@@ -35,8 +35,6 @@ const getData2 = async() => {
             console.log(ulList[i])
             db.inputData(ulList[i])
         })
-        await page.close();
-        await browser.close();
         
         return ulList
 
