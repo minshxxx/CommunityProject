@@ -34,17 +34,43 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'SLEIGothicTTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'paybooc-Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'paybooc-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Vitro_core';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Vitro_core.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   width: 100%;
   padding: 0px;
   margin: 0px;
-  font-size: 36px;
-  font-weight: 100;
+  font-size: 44px;
   font-family: 'GilbeotBi';
   font-family: 'HSSaemaul-Regular';
   font-family: 'CookieRun-Regular';
   font-family: 'GmarketSansMedium';
+  font-family: 'SLEIGothicTTF';
+  font-family: 'CookieRun-Regular';
+  font-family: 'paybooc-Light';
+  font-family: 'paybooc-Medium';
 }
 
 body .webtitle{    
@@ -57,7 +83,7 @@ body .webtitle{
 
 .box-container {
   display: flex;
-  padding: 2px 30px;
+  padding: 10px 12px;
   border-bottom: 2px solid #c0c0c0;
   background-color: white;
 }
@@ -85,57 +111,71 @@ a:visited{
   text-align: center;
   flex-direction: column;
   font-size: 0.8em;
-  width: 8%;
-  margin-right: 20px;
+  width: 14%;
+  margin-left: 0.1em;
 }
 
 .left-container .like-wrap{
-  margin-top: 6px;
-  font-size: 1em;
-  color:red;
+  font-family: 'Vitro_core';
+  display: flex;
+  justify-content: center;
+  margin-top:0.6em;
+  margin-bottom:0.3em;
+  font-size: 0.85em;
+  color:black;
+}
+
+.left-container .like-wrap .like-emoji {
+  margin-left: -0.3em;
+  font-weight: 900;
 }
 
 .left-container .like-wrap .like {
-  font-weight: 900;
+  width: 74px;
+  margin-top:auto;
+  text-align: right;
 }
 
 .left-container .site{
   color: white;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  margin: 0 0.65em;
+  margin-bottom: 0.6em;
   font-weight: bold;
+  border-radius: 0.3em;
+  padding: 0.1em 0;
 }
 
 .left-container .ou {
-  color: blue;
+  background: blue;
 }
 
 .left-container .dog {
-  color: rgb(52, 82, 146);
+  background: rgb(52, 82, 146);
 }
 
 .left-container .fm {
-  color: rgb(79, 161, 255);
+  background: rgb(79, 161, 255);
 }
 
 .left-container .ppomppu {
-  color: rgb(97, 97, 97);
+  background: rgb(97, 97, 97);
 }
 
 .left-container .humoruniv {
-  color: rgb(255, 0, 85);
+  background: rgb(255, 0, 85);
 }
 
 .left-container .view{
-  color: #979797;
-  font-size: 0.75em;
+  background: #979797;
 }
 
 .right-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 92%;
-  margin-left: 20px;
+  width: 86%;
+  margin-left: 0.5em;
 }
 
 .right-container .title-wrap{
@@ -143,17 +183,23 @@ a:visited{
 }
 
 .right-container .title{
-  font-size: 0.75em;
+  font-size: 0.8em;
   color: black;
 }
 
 .right-container .comment{
   color: rgb(255, 123, 0);
-  margin-left: 10px;
-  font-size: 0.75em;
+  font-size: 0.8em;
 }
 
 .right-container .author{
-  font-size: 0.5em;
+  margin-top: 0.5em;
+  font-size: 0.3em;
   color:#9e9e9e;
+}
+
+.site-wrap{
+  width: 30px;
+  background: black;
+  color: white;
 }

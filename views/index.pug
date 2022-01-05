@@ -1,25 +1,11 @@
 extends layout
 
 block content
-  //- table
-  //-   -for(var i = 0; i < data.length; i++)
-  //-     tr.container(onClick=`location.href="${data[i].url}"`)
-  //-       td.left-td(width="8%")
-  //-         -var siteColor = (data[i].site === '오유' ? 'ou' : null)
-  //-         .left-wrap
-  //-           .heart ♥
-  //-           .like #{data[i].like}
-  //-         .left-wrap(class=siteColor)
-  //-           div #{data[i].site}
-  //-       td(width="*")
-  //-         .center-wrap
-  //-           .title #{data[i].title}
   .box-container(style="background-color: black; color: white;")
     .left-container 
       .like-wrap
-        .like Like
-        .view View
-      .site site
+        div(style="color:white;") Like
+      .site Site
     .right-container
       .title-wrap 
         text.title(style="color: white;") Title
@@ -32,9 +18,9 @@ block content
     a.box-container(href=`${data[i].url}`)
       .left-container
         .like-wrap
-          .heart 
-          .like ♥#{data[i].like}
-          .view #{data[i].view}
+          .like-emoji 👍
+          span.like
+            div #{data[i].like}
         .site(class=siteColor) #{data[i].site}
       .right-container
         .title-wrap
