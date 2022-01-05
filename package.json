@@ -16,6 +16,7 @@
     "iconv-lite": "^0.6.3",
     "morgan": "^1.9.1",
     "mysql2": "^2.3.3",
+    "node-schedule": "^2.1.0",
     "nodemon": "^2.0.15",
     "pug": "2.0.0-beta11",
     "puppeteer": "^13.0.1",

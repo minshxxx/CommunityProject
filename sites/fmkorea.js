@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const db = require('./database')
-const calcDate = require('./calcDate')
+const db = require('./../database')
+const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
   let page1 = await getData("https://www.fmkorea.com/best2");

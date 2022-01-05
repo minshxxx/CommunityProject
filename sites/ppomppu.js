@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
-const db = require('./database')
+const db = require('./../database')
 
 const getData2 = async () => {
   let page1 = await getData("https://www.ppomppu.co.kr/zboard/zboard.php?id=humor&hotlist_flag=999");

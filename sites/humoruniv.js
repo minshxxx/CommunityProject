@@ -1,7 +1,7 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 const puppeteer = require('puppeteer')
-const db = require('./database')
+const db = require('./../database')
 
 const func = async() => {
     try{
