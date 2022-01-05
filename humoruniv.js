@@ -1,27 +1,26 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 const puppeteer = require('puppeteer')
+const inputData = require('./database')
 
-const getData2 = async() => {
+const func = async() => {
     try{
-        const broswer = await puppeteer.launch({ 
-          headless: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox']
-        });
-        const page = await broswer.newPage();
-
-        page.on("dialog", (dialog) => {
-            dialog.accept();
+        const browser = await puppeteer.launch({
+            "headless": true,
         })
-        await page.goto('http://web.humoruniv.com/board/humor/list.html?table=pds');
-        await page.waitForSelector('#post_list')
+        const page = await browser.newPage();
 
+        await page.goto(`http://web.humoruniv.com/`, { waitUntil: ['load', 'networkidle0'] }); // WAIT for the page load finish. Provide wait options, you can read moe about it in documentation.
+        await page.waitForSelector('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
+        await page.click('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
+        await page.waitForSelector('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
+        
         const content = await page.content();
         const $ = cheerio.load(content)
-        // const $bodyList = $("table#post_list tbody").find('tr');
         const $bodyList = $("table#post_list tbody").find('tr[id^=li_]');
 
         let ulList = [];
+        
         $bodyList.each((i, item) => {
             ulList[i] = {
               site: `웃대`,
@@ -33,17 +32,22 @@ const getData2 = async() => {
               view: getView($(item).find('td.li_und').text()),
               like: $(item).find('span.o').text().trim()
             }
+            inputData(ulList[i])
         })
-        broswer.close();
+        await page.close();
+        await browser.close();
+        
+        return ulList
 
-        return ulList;
     }catch(e){
         console.log(e)
     }
 }
 
+func()
+
 const getTitle = (val, comment) => {
-    const ret = val.trim().split(comment)[0]
+    const ret = val.trim().split(comment)[0].trim()
     return ret
 }
 
@@ -52,4 +56,4 @@ const getView = (val) => {
     return ret
 }
 
-module.exports.getData2 = getData2
+module.exports.getData2 = func;

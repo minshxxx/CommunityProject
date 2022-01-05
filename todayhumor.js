@@ -1,5 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const db = require('./database')
 
 const getData2 = async () => {
   let page1 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
@@ -27,7 +28,7 @@ const getData = async (url) => {
     $bodyList.each((i, item) => {
       ulList[i] = {
         site: `오유`,
-        title: $(item).find('td.subject a').text(),
+        subject: $(item).find('td.subject a').text(),
         comment: $(item).find('td.subject span.list_memo_count_span').text(),
         url: `http://todayhumor.co.kr${$(item).find('td.subject a').attr('href')}`,
         author: $(item).find('td.name').text(),
@@ -35,6 +36,7 @@ const getData = async (url) => {
         view: $(item).find('td.hits').text(),
         like: $(item).find('td.oknok').text()
       }
+      db.inputData(ulList[i])
     })
     
     return ulList
@@ -42,4 +44,8 @@ const getData = async (url) => {
     console.error(error);
   }
 }
+
+getData2();
+
+
 module.exports.getData2 = getData2;

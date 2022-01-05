@@ -30,7 +30,7 @@ const getData = async (url) => {
       ulList[i] = {
         site: `뽐뿌`,
         title: $(item).find('td.list_vspace a font.list_title').text(),
-        comment: $(item).find('span.list_comment2').text().trim(),
+        comment: `[${$(item).find('span.list_comment2').text().trim()}]`,
         url: `https://www.ppomppu.co.kr/zboard/${$(item).find('a:has(> font.list_title)').attr('href')}`,
         author: $(item).find('span.list_name').text(),
         date: $(item).find('td nobr.eng').text().trim(),

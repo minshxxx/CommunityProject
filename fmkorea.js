@@ -1,5 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const db = require('./database')
 
 const getData2 = async () => {
   let page1 = await getData("https://www.fmkorea.com/best");
@@ -27,7 +28,7 @@ const getData = async (url) => {
     $bodyList.each((i, item) => {
       ulList[i] = {
         site: `펨코`,
-        title: getTitle($(item).find('h3.title a').text(), $(item).find('h3.title a span.comment_count').text()),
+        subject: getTitle($(item).find('h3.title a').text(), $(item).find('h3.title a span.comment_count').text()),
         comment: $(item).find('h3.title a span.comment_count').text(),
         url: `https://www.fmkorea.com/${$(item).find('h3.title a').attr('href')}`,
         author: $(item).find('span.author').text(),
@@ -35,12 +36,15 @@ const getData = async (url) => {
         view: '-',
         like: $(item).find('a.pc_voted_count span.count').text()
       }
+      db.inputData(ulList[i])
     })
     return ulList
   } catch (error) {
     console.error(error);
   }
 }
+
+getData2()
 
 const getTitle = (val, comment) => {
   const ret = val.trim().split(comment)[0]

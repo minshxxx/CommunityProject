@@ -17,9 +17,10 @@ const getData2 = async () => {
 
 const getData = async (url) => {
   try {
-    let html;
-    html = await axios.get(url);
+    const html = await axios.get(url);
     
+    console.log(html)
+
     let ulList = [];
     const $ = cheerio.load(html.data);
     const $bodyList = $("table.ed tbody").find('tr:not(tr.notice)');
@@ -42,5 +43,7 @@ const getData = async (url) => {
     console.error(error);
   }
 }
+
+getData2()
 
 module.exports.getData2 = getData2;

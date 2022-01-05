@@ -25,8 +25,9 @@ block content
         text.title(style="color: white;") Title
         span.comment
       .author atuhor / date
-  -for(var i = 0; i < 15; i++)
-    -var siteColor = (data[i].site === '오유' ? 'ou' : null)
+  -for(var i = 0; i < data.length; i++)
+    -var siteColor = (data[i].site === '오유' ? 'ou' : siteColor)
+    -var siteColor = (data[i].site === '펨코' ? 'fm' : siteColor)
     a.box-container(href=`${data[i].url}`)
       .left-container
         .like-wrap
@@ -36,59 +37,20 @@ block content
         .site(class=siteColor) #{data[i].site}
       .right-container
         .title-wrap
-          text.title #{data[i].title} 
+          text.title #{data[i].subject} 
           span.comment #{data[i].comment}
         .author #{data[i].author} / #{data[i].date}
-    -var siteColor = (data2[i].site === '갣립' ? 'dog' : null)
-    a.box-container(href=`${data2[i].url}`)
-      .left-container
-        .like-wrap
-          .heart 
-          .like ♥#{data2[i].like}
-          .view #{data2[i].view}
-        .site(class=siteColor) #{data2[i].site}
-      .right-container
-        .title-wrap
-          text.title #{data2[i].title} 
-          span.comment #{data2[i].comment}
-        .author #{data2[i].author} / #{data2[i].date}
-    -var siteColor = (data3[i].site === '펨코' ? 'fm' : null)
-    a.box-container(href=`${data3[i].url}`)
-      .left-container
-        .like-wrap
-          .heart 
-          .like ♥#{data3[i].like}
-          .view #{data3[i].view}
-        .site(class=siteColor) #{data3[i].site}
-      .right-container
-        .title-wrap
-          text.title #{data3[i].title} 
-          span.comment #{data3[i].comment}
-        .author #{data3[i].author} / #{data3[i].date}
-    -var siteColor = (data4[i].site === '뽐뿌' ? 'ppomppu' : null)
-    a.box-container(href=`${data4[i].url}`)
-      .left-container
-        .like-wrap
-          .heart 
-          .like ♥#{data4[i].like}
-          .view #{data4[i].view}
-        .site(class=siteColor) #{data4[i].site}
-      .right-container
-        .title-wrap
-          text.title #{data4[i].title} 
-          span.comment #{data4[i].comment}
-        .author #{data4[i].author} / #{data4[i].date}
-    -var siteColor = (data5[i].site === '웃대' ? 'humoruniv' : null)
-    a.box-container(href=`${data5[i].url}`)
-      .left-container
-        .like-wrap
-          .heart 
-          .like ♥#{data5[i].like}
-          .view #{data5[i].view}
-        .site(class=siteColor) #{data5[i].site}
-      .right-container
-        .title-wrap
-          text.title #{data5[i].title} 
-          span.comment #{data5[i].comment}
-        .author #{data5[i].author} / #{data5[i].date}
+    //- -var siteColor = (data2[i].site === '갣립' ? 'dog' : null)
+    //- a.box-container(href=`${data2[i].url}`)
+    //-   .left-container
+    //-     .like-wrap
+    //-       .heart 
+    //-       .like ♥#{data2[i].like}
+    //-       .view #{data2[i].view}
+    //-     .site(class=siteColor) #{data2[i].site}
+    //-   .right-container
+    //-     .title-wrap
+    //-       text.title #{data2[i].title} 
+    //-       span.comment #{data2[i].comment}
+    //-     .author #{data2[i].author} / #{data2[i].date}
         

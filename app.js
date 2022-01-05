@@ -3,11 +3,31 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var db = require('./models')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+
+const dbConnection = () => {
+  // DB authentication
+  db.sequelize.authenticate()
+  .then(() => {
+      console.log('Connection has been established successfully.');
+      return db.sequelize.sync();
+  })
+  .then(() => {
+      console.log('DB Sync complete.');
+  })
+  .catch(err => {
+      console.error('Unable to connect to the database:', err);
+  });
+}
+
+// db 접속
+dbConnection();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
