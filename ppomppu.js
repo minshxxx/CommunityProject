@@ -1,6 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
+const db = require('./database')
 
 const getData2 = async () => {
   let page1 = await getData("https://www.ppomppu.co.kr/zboard/zboard.php?id=humor&hotlist_flag=999");
@@ -29,7 +30,7 @@ const getData = async (url) => {
     $bodyList.each((i, item) => {
       ulList[i] = {
         site: `뽐뿌`,
-        title: $(item).find('td.list_vspace a font.list_title').text(),
+        subject: $(item).find('td.list_vspace a font.list_title').text(),
         comment: `[${$(item).find('span.list_comment2').text().trim()}]`,
         url: `https://www.ppomppu.co.kr/zboard/${$(item).find('a:has(> font.list_title)').attr('href')}`,
         author: $(item).find('span.list_name').text(),
@@ -37,6 +38,8 @@ const getData = async (url) => {
         view: $(item).find('tr td.list_vspace:last-child').text(),
         like: getLike($(item).find('tr td.list_vspace:nth-child(5n)').text())
       }
+      console.log(ulList[i].date)
+      db.inputData(ulList[i])
     })
 
     return ulList
@@ -50,6 +53,7 @@ const getLike = (val) => {
   return ret === '' ? '0' : ret
 }
 
+getData2()
 
 
 module.exports.getData2 = getData2;
