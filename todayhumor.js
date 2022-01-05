@@ -1,6 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require('./database')
+const calcDate = require('./calcDate')
 
 const getData2 = async () => {
   let page1 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
@@ -32,10 +33,11 @@ const getData = async (url) => {
         comment: $(item).find('td.subject span.list_memo_count_span').text(),
         url: `http://todayhumor.co.kr${$(item).find('td.subject a').attr('href')}`,
         author: $(item).find('td.name').text(),
-        date: $(item).find('td.date').text(),
+        date: calcDate.todayhumor($(item).find('td.date').text()),
         view: $(item).find('td.hits').text(),
         like: $(item).find('td.oknok').text()
       }
+      console.log(ulList[i].date)
       db.inputData(ulList[i])
     })
     
