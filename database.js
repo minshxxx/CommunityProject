@@ -1,19 +1,6 @@
 const db = require('./models')
 
 const inputData = (siteData) => {
-
-    db.sequelize.authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-        db.sequelize.sync();
-    })
-    .then(() => {
-        console.log('DB Sync complete.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
-
     db.Sites.destroy({
         where: {
             site: siteData.site,
