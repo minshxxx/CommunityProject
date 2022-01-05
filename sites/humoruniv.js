@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const puppeteer = require('puppeteer')
 const db = require('./../database')
 
-const func = async() => {
+const getData2 = async() => {
     try{
         const browser = await puppeteer.launch({
             "headless": true,
@@ -45,7 +45,7 @@ const func = async() => {
     }
 }
 
-func()
+getData2()
 
 const getTitle = (val, comment) => {
     const ret = val.trim().split(comment)[0].trim()
