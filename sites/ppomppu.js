@@ -53,7 +53,4 @@ const getLike = (val) => {
   return ret === '' ? '0' : ret
 }
 
-getData2()
-
-
 module.exports.getData2 = getData2;

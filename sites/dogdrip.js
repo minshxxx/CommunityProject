@@ -44,6 +44,4 @@ const getData = async (url) => {
   }
 }
 
-getData2()
-
 module.exports.getData2 = getData2;

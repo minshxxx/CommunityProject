@@ -45,8 +45,6 @@ const getData = async (url) => {
   }
 }
 
-getData2()
-
 const getTitle = (val, comment) => {
   const ret = val.trim().split(comment)[0]
   return ret
