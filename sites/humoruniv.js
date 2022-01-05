@@ -57,4 +57,4 @@ const getView = (val) => {
     return ret
 }
 
-module.exports.getData2 = func;
+module.exports.getData2 = getData2;
