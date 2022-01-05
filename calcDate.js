@@ -27,10 +27,8 @@ module.exports = {
         const hour = `${str.split(' ')[1].split(':')[0]}`
         const minute = `${str.split(':')[1]}`
 
-        const date = `${year}-${month}-${day} ${hour}:${minute}:00`
-
-        const ret = moment(date).format("YYYY-MM-DD HH:mm:ss")
-
+        const ret = `${year}-${month}-${day} ${hour}:${minute}:00`
+        
         return ret
     }
 }
