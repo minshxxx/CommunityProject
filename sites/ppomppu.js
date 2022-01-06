@@ -2,9 +2,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
 const db = require('./../database')
+const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
-  let page1 = await getData("https://www.ppomppu.co.kr/zboard/zboard.php?id=humor&hotlist_flag=999");
+  let page1 = await getData("https://www.ppomppu.co.kr/hot.php");
   // let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
   // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
   
@@ -24,21 +25,19 @@ const getData = async (url) => {
 
     let ulList = [];
     const $ = cheerio.load(content);
-    const $bodyList = $("table.title_bg").find('tr.list0, tr.list1');
-    
+    const $bodyList = $("body > div > div.contents > div.container > div:nth-child(2) > div.board_box > table.board_table > tbody").find('tr[class^=line]');
 
     $bodyList.each((i, item) => {
       ulList[i] = {
         site: `뽐뿌`,
-        subject: $(item).find('td.list_vspace a font.list_title').text(),
+        subject: $(item).find('td:nth-child(4) > a').text(),
         comment: `[${$(item).find('span.list_comment2').text().trim()}]`,
         url: `https://www.ppomppu.co.kr/zboard/${$(item).find('a:has(> font.list_title)').attr('href')}`,
-        author: $(item).find('span.list_name').text(),
-        date: $(item).find('td nobr.eng').text().trim(),
-        view: $(item).find('tr td.list_vspace:last-child').text(),
-        like: getLike($(item).find('tr td.list_vspace:nth-child(5n)').text())
+        author: $(item).find('td:nth-child(2)').text(),
+        date: calcDate.ppomppu($(item).find('td:nth-child(5)').text()),
+        view: $(item).find('td:nth-child(7)').text(),
+        like: getLike($(item).find('td:nth-child(6)').text())
       }
-      console.log(ulList[i].date)
       db.inputData(ulList[i])
     })
 

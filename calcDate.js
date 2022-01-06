@@ -30,5 +30,22 @@ module.exports = {
         const ret = `${year}-${month}-${day} ${hour}:${minute}:00`
         
         return ret
+    },
+    ppomppu : (str) => {
+        const hour = `${str.split(':')[0]}`
+        const minute = `${str.split(':')[1]}`
+        const second = `${str.split(':')[2]}`
+        
+        const date = moment().set(
+            {
+                'hour': hour, 
+                'minute' : minute,
+                'second' : second
+            }
+        );
+
+        const ret = date.format('YYYY-MM-DD HH:mm:ss')
+        
+        return ret
     }
 }
