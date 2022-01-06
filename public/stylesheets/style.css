@@ -58,19 +58,19 @@
   font-weight: normal;
   font-style: normal;
 }
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
 body {
   width: 100%;
   padding: 0px;
   margin: 0px;
   font-size: 44px;
-  font-family: 'GilbeotBi';
-  font-family: 'HSSaemaul-Regular';
-  font-family: 'CookieRun-Regular';
-  font-family: 'GmarketSansMedium';
-  font-family: 'SLEIGothicTTF';
-  font-family: 'CookieRun-Regular';
-  font-family: 'paybooc-Light';
   font-family: 'paybooc-Medium';
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 body .webtitle{    
