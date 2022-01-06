@@ -10,7 +10,7 @@ module.exports = async() => {
     await humoruniv.getData2();
     await ppomppu.getData2();
     await todayhumor.getData2();
-    schedule.scheduleJob('0 0/15 * * * *', async () => {
+    schedule.scheduleJob('0 0/30 * * * *', async () => {
         await fmkorea.getData2();
         await humoruniv.getData2();
         await ppomppu.getData2();
