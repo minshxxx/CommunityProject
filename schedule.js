@@ -6,7 +6,7 @@ const ppomppu = require('./sites/ppomppu')
 const todayhumor = require('./sites/todayhumor')
 
 module.exports = () => {
-    schedule.scheduleJob('0 0 0/1 * * *', async () => {
+    schedule.scheduleJob('0 0 0/15 * * *', async () => {
         await fmkorea.getData2();
         await humoruniv.getData2();
         await ppomppu.getData2();
