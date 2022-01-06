@@ -13,7 +13,9 @@ const getData2 = async () => {
     ...page2,
   ]
   
-  return newArr;
+  newArr.each((item) => {
+    db.inputData(item)
+  })
 }
 
 const getData = async (url) => {
@@ -36,7 +38,6 @@ const getData = async (url) => {
         view: $(item).find('td:nth-child(7)').text(),
         like: getLike($(item).find('td:nth-child(6)').text())
       }
-      db.inputData(ulList[i])
     })
 
     return ulList

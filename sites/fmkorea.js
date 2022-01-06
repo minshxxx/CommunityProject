@@ -10,11 +10,13 @@ const getData2 = async () => {
   
   const newArr = [
     ...page1,
-    // ...page2,
+    ...page2,
     // ...page3
   ]
   
-  return newArr;
+  newArr.each((item) => {
+    db.inputData(item)
+  })
 }
 
 const getData = async (url) => {
@@ -37,7 +39,6 @@ const getData = async (url) => {
         view: '-',
         like: $(item).find('a.pc_voted_count span.count').text()
       }
-      db.inputData(ulList[i])
     })
     return ulList
   } catch (error) {
