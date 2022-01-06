@@ -1,15 +1,18 @@
 doctype html
 html
   head
+    meta(http-equiv='Expires' content='-1')
+    meta(http-equiv='Pragma' content='no-cache')
+    meta(http-equiv='Cache-Control' content='no-cache')
+
     title INGI.FUN 커뮤니티 인기글 모음
     link(rel='stylesheet', href='/stylesheets/style.css')
     script.
-      window.onload = function() {
+      window.onpageshow = function() {
         setTimeout(function () {
-          const myCookie = document.cookie
-          const posY = myCookie.split('=')[1];
+          const posY = localStorage.getItem('posY')
           window.scrollTo(0, posY)
-        },2);
+        }, 10);
       }
   body
     div.webtitle INGI.FUN
@@ -17,9 +20,7 @@ html
   script.
     function myScrollPosition(){
       const posY = window.scrollY;
-      console.log(`posY: ${posY}`)
-      document.cookie = "posY = " + posY
+      localStorage.setItem('posY', posY)
     }
-
 
 script(data-ad-client='ca-pub-5138878481706401' async='' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
