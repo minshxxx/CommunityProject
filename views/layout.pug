@@ -5,13 +5,15 @@ html
     meta(http-equiv='Pragma' content='no-cache')
     meta(http-equiv='Cache-Control' content='no-cache')
 
+    meta(name="naver-site-verification" content="c5c5df182a3068bb564d751c5660b213823d33e3")
+
     title INGI.FUN 커뮤니티 인기글 모음
     link(rel='stylesheet', href='/stylesheets/style.css')
     script.
       window.onpageshow = function() {
         setTimeout(function () {
           const posY = localStorage.getItem('posY')
-          localStorage.removeItem("posY");
+          localStorage.removeItem("");
           window.scrollTo(0, posY)
         }, 10);
       }
