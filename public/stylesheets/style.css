@@ -175,6 +175,7 @@ a:visited{
   justify-content: center;
   flex-direction: column;
   margin-left: 0.5em;
+  width: 18em;
 }
 
 .right-container .title-wrap{
