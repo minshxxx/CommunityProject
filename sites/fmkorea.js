@@ -40,7 +40,6 @@ const getData = async (url) => {
         like: $(item).find('a.pc_voted_count span.count').text()
       }
     })
-    return ulList
   } catch (error) {
     console.error(error);
   }

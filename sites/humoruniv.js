@@ -34,9 +34,9 @@ const getData2 = async() => {
             }
             db.inputData(ulList[i])
         })
+        await page.close();
+        await browser.close();
         
-        return ulList
-
     }catch(e){
         console.log(e)
     }

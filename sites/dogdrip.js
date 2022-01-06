@@ -37,8 +37,6 @@ const getData = async (url) => {
         like: $(item).find('td.ed').text()
       }
     })
-
-    return ulList
   } catch (error) {
     console.error(error);
   }

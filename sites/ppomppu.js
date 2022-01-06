@@ -39,8 +39,7 @@ const getData = async (url) => {
         like: getLike($(item).find('td:nth-child(6)').text())
       }
     })
-
-    return ulList
+    
   } catch (error) {
     console.error(error);
   }
