@@ -5,7 +5,7 @@ const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
   let page1 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
-  // let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest&page=2");
   // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
   
   const newArr = [

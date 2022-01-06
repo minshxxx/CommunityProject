@@ -4,8 +4,8 @@ const db = require('./../database')
 const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
-  let page1 = await getData("https://www.fmkorea.com/best2");
-  // let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  let page1 = await getData("https://www.fmkorea.com/index.php?mid=best&page=1");
+  let page2 = await getData("https://www.fmkorea.com/index.php?mid=best&page=2");
   // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
   
   const newArr = [
