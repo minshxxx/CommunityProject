@@ -16,7 +16,7 @@ block content
     -var siteColor = (data[i].site === '펨코' ? 'fm' : siteColor)
     -var siteColor = (data[i].site === '웃대' ? 'humoruniv' : siteColor)
     -var siteColor = (data[i].site === '뽐뿌' ? 'ppomppu' : siteColor)
-    a.box-container(href=`${data[i].url}`)
+    a.box-container(href=`${data[i].url}` onclick="myScrollPosition()")
       .left-container
         .like-wrap
           .like-emoji 👍
@@ -41,4 +41,3 @@ block content
     //-       text.title #{data2[i].title} 
     //-       span.comment #{data2[i].comment}
     //-     .author #{data2[i].author} / #{data2[i].date}
-        

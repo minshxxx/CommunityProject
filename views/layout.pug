@@ -3,9 +3,23 @@ html
   head
     title INGI.FUN 커뮤니티 인기글 모음
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script.
+      window.onload = function() {
+        setTimeout(function () {
+          const myCookie = document.cookie
+          const posY = myCookie.split('=')[1];
+          window.scrollTo(0, posY)
+        },2);
+      }
   body
     div.webtitle INGI.FUN
     block content
+  script.
+    function myScrollPosition(){
+      const posY = window.scrollY;
+      console.log(`posY: ${posY}`)
+      document.cookie = "posY = " + posY
+    }
 
 
 script(data-ad-client='ca-pub-5138878481706401' async='' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
