@@ -13,7 +13,7 @@ const getData2 = async () => {
     ...page2,
   ]
   
-  newArr.each((item) => {
+  newArr.forEach((item) => {
     db.inputData(item)
   })
 }
