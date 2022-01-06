@@ -215,11 +215,13 @@ a:visited{
     margin-right: 2em;
   }
 
+  .right-container {
+    width: 60em;
+  }
   .right-container .title{
     font-size: 1em;
   }
   .right-container .author{
     font-size: 0.5em;
-    width: 60em;
   }
 }
