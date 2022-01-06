@@ -37,7 +37,6 @@ const getData = async (url) => {
         view: $(item).find('td.hits').text(),
         like: $(item).find('td.oknok').text()
       }
-      console.log(ulList[i].date)
       db.inputData(ulList[i])
     })
     
