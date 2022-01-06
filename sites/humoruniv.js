@@ -32,7 +32,6 @@ const getData2 = async() => {
               view: getView($(item).find('td.li_und').text()),
               like: $(item).find('span.o').text().trim()
             }
-            console.log(ulList[i])
             db.inputData(ulList[i])
         })
         
