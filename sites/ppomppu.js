@@ -6,13 +6,11 @@ const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
   let page1 = await getData("https://www.ppomppu.co.kr/hot.php");
-  // let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
-  // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  let page2 = await getData("https://www.ppomppu.co.kr/hot.php?id=&page=2&category=999&search_type=&keyword=&page_num=&del_flag=&bbs_list_category=0");
   
   const newArr = [
     ...page1,
-    // ...page2,
-    // ...page3
+    ...page2,
   ]
   
   return newArr;
@@ -32,7 +30,7 @@ const getData = async (url) => {
         site: `뽐뿌`,
         subject: $(item).find('td:nth-child(4) > a').text(),
         comment: `[${$(item).find('span.list_comment2').text().trim()}]`,
-        url: `https://www.ppomppu.co.kr/zboard/${$(item).find('a:has(> font.list_title)').attr('href')}`,
+        url: `https://www.ppomppu.co.kr${$(item).find('td:nth-child(4) > a').attr('href')}`,
         author: $(item).find('td:nth-child(2)').text(),
         date: calcDate.ppomppu($(item).find('td:nth-child(5)').text()),
         view: $(item).find('td:nth-child(7)').text(),
