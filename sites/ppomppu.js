@@ -40,6 +40,8 @@ const getData = async (url) => {
       }
     })
     
+
+    return ulList;
   } catch (error) {
     console.error(error);
   }

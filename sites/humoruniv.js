@@ -36,6 +36,8 @@ const getData2 = async() => {
         })
         await page.close();
         await browser.close();
+
+        return ulList;
         
     }catch(e){
         console.log(e)

@@ -40,6 +40,8 @@ const getData = async (url) => {
         view: $(item).find('td.hits').text(),
         like: $(item).find('td.oknok').text()
       }
+
+      return ulList;
     })
   } catch (error) {
     console.error(error);
