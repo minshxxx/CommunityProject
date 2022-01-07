@@ -15,14 +15,14 @@ const getData2 = async() => {
         await page.click('#wrap_gnb > div.wrap_gnb > dl:nth-child(4) > dd:nth-child(2) > a:nth-child(2)')
         await page.waitForSelector('#post_list > tbody > tr:nth-child(19)')
         
-        const content = await page.content();
-        const $ = cheerio.load(content)
-        const $bodyList = $("#post_list > tbody").find('tr[id^=li_chk_pds-]');
+        let content = await page.content();
+        let $ = cheerio.load(content)
+        let $bodyList = $("#post_list > tbody").find('tr[id^=li_chk_pds-]');
 
         let ulList = [];
         
         $bodyList.each((i, item) => {
-            ulList[i] = {
+            ulList.push({
               site: `웃대`,
               subject: getTitle($(item).find('td.li_sbj a').text(), $(item).find('td.li_sbj a span.list_comment_num').text()),
               comment: $(item).find('td.li_sbj a span.list_comment_num').text().trim(),
@@ -31,9 +31,33 @@ const getData2 = async() => {
               date: $(item).find('span.w_date').text().trim() + ' ' + $(item).find('span.w_time').text().trim(),
               view: getView($(item).find('td.li_und').text()),
               like: $(item).find('span.o').text().trim()
-            }
-            db.inputData(ulList[i])
+            })
         })
+        
+        await page.click('#cnts_list_new > div.paging > span > a:nth-child(3)')
+        await page.waitForSelector('#post_list > tbody > tr:nth-child(19)')
+        
+        content = await page.content();
+        $ = cheerio.load(content)
+        $bodyList = $("#post_list > tbody").find('tr[id^=li_chk_pds-]');
+        
+        $bodyList.each((i, item) => {
+            ulList.push({
+              site: `웃대`,
+              subject: getTitle($(item).find('td.li_sbj a').text(), $(item).find('td.li_sbj a span.list_comment_num').text()),
+              comment: $(item).find('td.li_sbj a span.list_comment_num').text().trim(),
+              url: `http://web.humoruniv.com/board/humor/${$(item).find('td.li_sbj a').attr('href')}`,
+              author: $(item).find('td.g6').text(),
+              date: $(item).find('span.w_date').text().trim() + ' ' + $(item).find('span.w_time').text().trim(),
+              view: getView($(item).find('td.li_und').text()),
+              like: $(item).find('span.o').text().trim()
+            })
+        })
+
+        ulList.forEach((item) => {
+            db.inputData(item)
+        })
+
         await page.close();
         await browser.close();
 

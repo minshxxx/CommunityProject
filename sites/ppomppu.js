@@ -5,12 +5,10 @@ const db = require('./../database')
 const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
-  let page1 = await getData("https://www.ppomppu.co.kr/hot.php");
-  let page2 = await getData("https://www.ppomppu.co.kr/hot.php?id=&page=2&category=999&search_type=&keyword=&page_num=&del_flag=&bbs_list_category=0");
+  let page1 = await getData("https://www.ppomppu.co.kr/hot.php?category=2");
   
   const newArr = [
     ...page1,
-    ...page2,
   ]
   
   newArr.forEach((item) => {
@@ -40,7 +38,6 @@ const getData = async (url) => {
       }
     })
     
-
     return ulList;
   } catch (error) {
     console.error(error);

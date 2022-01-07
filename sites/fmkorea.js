@@ -6,12 +6,14 @@ const calcDate = require('./../calcDate')
 const getData2 = async () => {
   let page1 = await getData("https://www.fmkorea.com/index.php?mid=best&page=1");
   let page2 = await getData("https://www.fmkorea.com/index.php?mid=best&page=2");
-  // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+  let page3 = await getData("https://www.fmkorea.com/index.php?mid=best&page=3");
+  let page4 = await getData("https://www.fmkorea.com/index.php?mid=best&page=4");
   
   const newArr = [
     ...page1,
     ...page2,
-    // ...page3
+    ...page3,
+    ...page4
   ]
   
   newArr.forEach((item) => {
