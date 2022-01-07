@@ -34,7 +34,7 @@ const getData = async (url) => {
         subject: getTitle($(item).find('h3.title a').text(), $(item).find('h3.title a span.comment_count').text()),
         comment: $(item).find('h3.title a span.comment_count').text(),
         url: `https://www.fmkorea.com/${$(item).find('h3.title a').attr('href')}`,
-        author: $(item).find('span.author').text(),
+        author: $(item).find('span.author').text().split('/ ')[1],
         date: calcDate.fmkorea($(item).find('span.regdate').text().trim()),
         view: '-',
         like: $(item).find('a.pc_voted_count span.count').text()
