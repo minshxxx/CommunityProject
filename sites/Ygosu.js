@@ -35,7 +35,7 @@ const getData = async (url) => {
         comment: getComment(`[${$(item).find('td.tit > span > strong').text()}]`),
         url: `${$(item).find('td.tit > a').attr('href')}`,
         author: $(item).find('td.name > a').text().trim(),
-        date: calcDate.today() + ' ' + $(item).find('td.date').text(),
+        date: calcDate.ygosu($(item).find('td.date').text()),
         view: '-',
         like: getLike($(item).find('td.vote').text().trim())
       }

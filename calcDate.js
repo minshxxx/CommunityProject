@@ -1,7 +1,4 @@
 const moment = require('moment')
-
-
-
 module.exports = {
     fmkorea : (str) => {
         const today = moment();
@@ -70,6 +67,14 @@ module.exports = {
         }
     
         return `${Math.floor(betweenTimeDay / 365)}년전`;
+    },
+    ygosu : (value) => {
+        if(value.includes(":")){
+            return moment().format('YYYY-MM-DD') + " " + value
+        }
+        if(value.includes(".")){
+            return `${value} 23:59:59`
+        }
     },
     today : () =>{
         return moment().format('YYYY-MM-DD')
