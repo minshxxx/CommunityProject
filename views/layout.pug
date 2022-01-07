@@ -13,8 +13,8 @@ html
       window.onpageshow = function() {
         setTimeout(function () {
           const posY = localStorage.getItem('posY')
-          localStorage.removeItem("");
           window.scrollTo(0, posY)
+          localStorage.removeItem("posY");
         }, 10);
       }
   body
