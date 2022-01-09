@@ -3,24 +3,19 @@ const cheerio = require("cheerio");
 const db = require('./../database')
 const calcDate = require('./../calcDate')
 
-const getData2 = async () => {
-  let page1 = await getData("http://www.todayhumor.co.kr/board/list.php?table=humorbest&page=1");
-  // let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest&page=2");
-  // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+module.exports.getData = async () => {
+  let page1 = await Crawling("http://www.todayhumor.co.kr/board/list.php?table=humorbest&page=1");
   
   const newArr = [
     ...page1,
-    // ...page2,
-    // ...page3
   ]
 
   newArr.forEach((item) => {
     db.inputData(item)
   })
-
 }
 
-const getData = async (url) => {
+const Crawling = async (url) => {
   try {
     let html;
     html = await axios.get(url);
@@ -47,5 +42,3 @@ const getData = async (url) => {
     console.error(error);
   }
 }
-
-module.exports.getData2 = getData2;

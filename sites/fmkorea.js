@@ -4,16 +4,10 @@ const db = require('./../database')
 const calcDate = require('./../calcDate')
 
 const getData2 = async () => {
-  let page1 = await getData("https://www.fmkorea.com/index.php?mid=best&page=1");
-  let page2 = await getData("https://www.fmkorea.com/index.php?mid=best&page=2");
-  let page3 = await getData("https://www.fmkorea.com/index.php?mid=best&page=3");
-  let page4 = await getData("https://www.fmkorea.com/index.php?mid=best&page=4");
+  let page1 = await Crawling("https://www.fmkorea.com/index.php?mid=best&page=1");
   
   const newArr = [
     ...page1,
-    ...page2,
-    ...page3,
-    ...page4
   ]
   
   newArr.forEach((item) => {
@@ -21,7 +15,7 @@ const getData2 = async () => {
   })
 }
 
-const getData = async (url) => {
+const Crawling = async (url) => {
   try {
     let html;
     html = await axios.get(url);

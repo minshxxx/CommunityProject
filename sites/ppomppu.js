@@ -4,8 +4,8 @@ const iconv = require('iconv-lite');
 const db = require('./../database')
 const calcDate = require('./../calcDate')
 
-const getData2 = async () => {
-  let page1 = await getData("https://www.ppomppu.co.kr/hot.php?category=2");
+module.exports.getData = async () => {
+  let page1 = await Crawling("https://www.ppomppu.co.kr/hot.php?category=2");
   
   const newArr = [
     ...page1,
@@ -16,7 +16,7 @@ const getData2 = async () => {
   })
 }
 
-const getData = async (url) => {
+const Crawling = async (url) => {
   try {
     let html = await axios.get(url, {responseType: "arraybuffer"});
     const content = iconv.decode(html.data, "EUC-KR").toString()
@@ -48,5 +48,3 @@ const getLike = (val) => {
   const ret = val.trim().split(' -')[0]
   return ret === '' ? '0' : ret
 }
-
-module.exports.getData2 = getData2;

@@ -3,15 +3,11 @@ const cheerio = require("cheerio");
 const calcDate = require('./../calcDate')
 const db = require('./../database')
 
-const getData2 = async () => {
-  let page1 = await getData('https://ygosu.com/community/real_article');
-  // let page2 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest&page=2");
-  // let page3 = await getData("http://www.todayhumor.co.kr/board/list.php?table=bestofbest");
+module.exports.getData = async () => {
+  let page1 = await Crawling('https://ygosu.com/community/real_article');
   
   const newArr = [
     ...page1,
-    // ...page2,
-    // ...page3
   ]
 
   newArr.forEach((item) => {
@@ -19,7 +15,7 @@ const getData2 = async () => {
   })
 }
 
-const getData = async (url) => {
+const Crawling = async (url) => {
   try {
     const html = await axios.get(url)
 
@@ -59,5 +55,3 @@ getLike = (val) => {
         return '0'
     return val
 }
-
-module.exports.getData2 = getData2;
