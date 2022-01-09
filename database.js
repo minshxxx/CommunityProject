@@ -33,7 +33,7 @@ module.exports.inputData = (siteData) => {
             subject : siteData.subject
         }
     }).then( data => {
-        if(siteData.subject !== '' && siteData.author !== '-'){
+        if(siteData.subject != '' && siteData.author != ''){
             // if(data){
             //     console.log(`${siteData.site}의 ${siteData.subject}은 중복입니다.`)
             // }
