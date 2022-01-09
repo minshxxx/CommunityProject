@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 const db = require('./../database')
 const calcDate = require('./../calcDate')
 
-const getData2 = async () => {
+module.exports.getData = async () => {
   let page1 = await Crawling("https://www.fmkorea.com/index.php?mid=best&page=1");
   
   const newArr = [
@@ -47,7 +47,3 @@ const getTitle = (val, comment) => {
   const ret = val.trim().split(comment)[0]
   return ret
 }
-
-
-
-module.exports.getData2 = getData2;
