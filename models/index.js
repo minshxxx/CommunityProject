@@ -11,10 +11,11 @@ process.env.DB_USER, process.env.DB_PASSWORD,{
     dialect: 'mysql',
     timezone: '+09:00', //한국 시간 셋팅
     operatorsAliases: Sequelize.Op,
+    logging: false,
     pool: {
         max: 5,
         min: 0,
-        idle: 10000
+        idle: 10000,
     }
 });
 
