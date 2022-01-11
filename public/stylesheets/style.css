@@ -96,9 +96,10 @@ body {
   font-family: 'Pretendard-Regular';
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  background-color: white !important;
 }
 
-body .webtitle{    
+.webtitle{    
   background-color:rgb(170, 14, 92);
   color: white;
   padding: 20px;

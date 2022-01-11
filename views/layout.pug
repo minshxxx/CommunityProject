@@ -13,17 +13,16 @@ html
     div.webtitle INGI.FUN :: 커뮤니티 인기 게시글 모음
     block content
   script.
-
     var data = !{JSON.stringify(data)};
+    var flag = false;
     var pageCnt = 0;
-
     window.onpageshow = function() {
       pageCnt = localStorage.getItem('pageCnt')
-      console.log("pageCnt: " + pageCnt)
+      localStorage.removeItem('pageCnt');
+      for(let i = 20; i < pageCnt * 20; i++){
+        GenerateContent(i)
+      }
       setTimeout(function () {
-        for(let i = 0; i < pageCnt * 20; i++){
-          GenerateContent(i)
-        }
         const posY = localStorage.getItem('posY')
         window.scrollTo(0, posY)
         localStorage.removeItem("posY");
@@ -77,7 +76,7 @@ html
       boxContainer.setAttribute('href', data[i].url)
       boxContainer.setAttribute('onclick', "myScrollPosition()")
 
-      likeDiv.innerHTML = data[i].like
+      likeDiv.innerHTML = i
       site.innerHTML = data[i].site
       title.innerHTML = data[i].subject
       comment.innerHTML = data[i].comment
@@ -105,12 +104,16 @@ html
     }
     window.onscroll = function() {
       if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) { 
-        setTimeout( () => {
-          pageCnt++;
-          for(let i = 0 + pageCnt * 20; i < pageCnt * 20 + 20; i++){
-            GenerateContent(i)
-          }
-        }, 500)
+        if(flag == false){
+          flag = true;
+          setTimeout( () => {
+            for(let i = (pageCnt + 1) * 20; i < (pageCnt + 2) * 20; i++){
+              GenerateContent(i)
+            }
+            flag = false;
+            pageCnt++;
+          }, 100)
+        }
       }
     }
 
