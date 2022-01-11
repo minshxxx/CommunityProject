@@ -30,20 +30,30 @@ module.exports = {
         return ret
     },
     ppomppu : (str) => {
-        const hour = `${str.split(':')[0]}`
-        const minute = `${str.split(':')[1]}`
-        const second = `${str.split(':')[2]}`
-        
-        const date = moment().set(
-            {
-                'hour': hour, 
-                'minute' : minute,
-                'second' : second
-            }
-        );
+        let ret;
 
-        const ret = date.format('YYYY-MM-DD HH:mm:ss')
+        if(str.includes(':')){
+            const hour = `${str.split(':')[0]}`
+            const minute = `${str.split(':')[1]}`
+            const second = `${str.split(':')[2]}`
+            
+            const date = moment().set(
+                {
+                    'hour': hour, 
+                    'minute' : minute,
+                    'second' : second
+                }
+            );
         
+            ret = date.format('YYYY-MM-DD HH:mm:ss')
+        }
+        if(str.includes("/")){
+            const year = `20${str.split('/')[0]}`
+            const month = `${str.split('/')[1]}`
+            const day = `${str.split('/')[2]}`
+            
+            ret = `${year}-${month}-${day} 23:59:59`
+        }
         return ret
     },
     timeFromToday : (value) => {
