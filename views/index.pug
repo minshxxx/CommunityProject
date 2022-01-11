@@ -11,7 +11,7 @@ block content
         text.title(style="color: white;") Title
         span.comment
       .author atuhor / date
-  -for(var i = 0; i < data.length; i++)
+  -for(var i = 0; i < 20; i++)
     -var siteColor = (data[i].site === '오유' ? 'ou' : siteColor)
     -var siteColor = (data[i].site === '펨코' ? 'fm' : siteColor)
     -var siteColor = (data[i].site === '웃대' ? 'humoruniv' : siteColor)
@@ -29,16 +29,3 @@ block content
           text.title #{data[i].subject} 
           span.comment #{data[i].comment}
         .author #{data[i].author} / #{data[i].date}
-    //- -var siteColor = (data2[i].site === '갣립' ? 'dog' : null)
-    //- a.box-container(href=`${data2[i].url}`)
-    //-   .left-container
-    //-     .like-wrap
-    //-       .heart 
-    //-       .like ♥#{data2[i].like}
-    //-       .view #{data2[i].view}
-    //-     .site(class=siteColor) #{data2[i].site}
-    //-   .right-container
-    //-     .title-wrap
-    //-       text.title #{data2[i].title} 
-    //-       span.comment #{data2[i].comment}
-    //-     .author #{data2[i].author} / #{data2[i].date}

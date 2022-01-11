@@ -9,21 +9,109 @@ html
 
     title INGI.FUN :: 커뮤니티 인기 게시글 모음
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script.
-      window.onpageshow = function() {
-        setTimeout(function () {
-          const posY = localStorage.getItem('posY')
-          window.scrollTo(0, posY)
-          localStorage.removeItem("posY");
-        }, 10);
-      }
   body
     div.webtitle INGI.FUN :: 커뮤니티 인기 게시글 모음
     block content
   script.
+
+    var data = !{JSON.stringify(data)};
+    var pageCnt = 0;
+
+    window.onpageshow = function() {
+      pageCnt = localStorage.getItem('pageCnt')
+      console.log("pageCnt: " + pageCnt)
+      setTimeout(function () {
+        for(let i = 0; i < pageCnt * 20; i++){
+          GenerateContent(i)
+        }
+        const posY = localStorage.getItem('posY')
+        window.scrollTo(0, posY)
+        localStorage.removeItem("posY");
+      }, 10);
+    }
+
     function myScrollPosition(){
       const posY = window.scrollY;
       localStorage.setItem('posY', posY)
+      localStorage.setItem('pageCnt', pageCnt)
+    }
+
+    function GenerateContent(i){
+      const boxContainer = document.createElement("a")
+
+      const leftContainer = document.createElement("div")
+      const likeWarp = document.createElement("div")
+      const site = document.createElement("div")
+      const likeEmoji = document.createElement("div")
+      const like = document.createElement("span")
+      const likeDiv = document.createElement("div")
+      const rightContainer = document.createElement("div")
+      const titleWrap = document.createElement("div")
+      const title = document.createElement("text")
+      const comment = document.createElement("comment")
+      const author = document.createElement("author")
+
+      boxContainer.classList.add("box-container")
+      leftContainer.classList.add("left-container")
+      likeWarp.classList.add("like-wrap")
+      likeEmoji.classList.add("like-emoji")
+      like.classList.add("like")
+      site.classList.add("site")
+      rightContainer.classList.add('right-container')
+      titleWrap.classList.add('title-wrap')
+      title.classList.add('title')
+      comment.classList.add('comment')
+      author.classList.add('author')
+
+      likeWarp.appendChild(likeDiv)
+      likeWarp.appendChild(likeEmoji)
+      leftContainer.appendChild(likeWarp)
+      leftContainer.appendChild(site)
+      titleWrap.appendChild(title)
+      titleWrap.appendChild(comment)
+      rightContainer.appendChild(titleWrap)
+      rightContainer.appendChild(author)
+      boxContainer.appendChild(leftContainer)
+      boxContainer.appendChild(rightContainer)
+
+      boxContainer.setAttribute('href', data[i].url)
+      boxContainer.setAttribute('onclick', "myScrollPosition()")
+
+      likeDiv.innerHTML = data[i].like
+      site.innerHTML = data[i].site
+      title.innerHTML = data[i].subject
+      comment.innerHTML = data[i].comment
+      author.innerHTML = `${data[i].author} / ${data[i].date}`
+      
+      switch(data[i].site){
+        case "오유":
+          site.classList.add("ou")
+          break;
+        case "펨코":
+          site.classList.add("fm")
+          break;
+        case "웃대":
+          site.classList.add("humoruniv")
+          break;
+        case "뽐뿌":
+          site.classList.add("ppomppu")
+          break;
+        case "와고":
+          site.classList.add("ygosu")
+          break;
+      }
+
+      document.body.appendChild(boxContainer)
+    }
+    window.onscroll = function() {
+      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) { 
+        setTimeout( () => {
+          pageCnt++;
+          for(let i = 0 + pageCnt * 20; i < pageCnt * 20 + 20; i++){
+            GenerateContent(i)
+          }
+        }, 500)
+      }
     }
 
 script(data-ad-client='ca-pub-5138878481706401' async='' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
