@@ -62,8 +62,8 @@ html
       comment.classList.add('comment')
       author.classList.add('author')
 
-      likeWarp.appendChild(likeDiv)
       likeWarp.appendChild(likeEmoji)
+      likeWarp.appendChild(like)
       leftContainer.appendChild(likeWarp)
       leftContainer.appendChild(site)
       titleWrap.appendChild(title)
@@ -76,7 +76,8 @@ html
       boxContainer.setAttribute('href', data[i].url)
       boxContainer.setAttribute('onclick', "myScrollPosition()")
 
-      likeDiv.innerHTML = datap[i].like
+      likeEmoji.innerHTML = "👍"
+      like.innerHTML = data[i].like
       site.innerHTML = data[i].site
       title.innerHTML = data[i].subject
       comment.innerHTML = data[i].comment
