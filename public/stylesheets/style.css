@@ -191,6 +191,10 @@ a:visited{
   background: rgb(255, 0, 85);
 }
 
+.left-container .clien {
+  background: rgb(0, 15, 65);
+}
+
 .left-container .view{
   background: #979797;
 }

@@ -7,6 +7,7 @@ const humoruniv = require('./sites/humoruniv')
 const ppomppu = require('./sites/ppomppu')
 const todayhumor = require('./sites/todayhumor')
 const Ygosu = require('./sites/Ygosu')
+const clien = require('./sites/clien')
 
 module.exports = async() => {
     db.deleteBasedHours(48)
@@ -15,6 +16,7 @@ module.exports = async() => {
     await ppomppu.getData();
     await todayhumor.getData();
     await Ygosu.getData();
+    await clien.getData();
     
     schedule.scheduleJob('0 0/30 * * * *', async () => {
         db.deleteBasedHours(48)
@@ -23,5 +25,6 @@ module.exports = async() => {
         await ppomppu.getData();
         await todayhumor.getData();
         await Ygosu.getData();
+        await clien.getData();
     })
 }
